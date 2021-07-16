@@ -3,38 +3,15 @@ import React from 'react'
 
 class Table extends React.Component{
     state={
-      allMovies:[
-        {
-        title:"Terminator",
-        genere:"Action",
-        sotck:"2",
-        rate:"2.5",
-        },
-
-        {
-          title:"Die Hard",
-          genere:"Action",
-          sotck:"3",
-          rate:"2.5",
-        },
-
-        {
-          title:"Get Out",
-          genere:"Thriller",
-          sotck:"1",
-          rate:"3.5",
-        },
-        
-        {
-          title:"Trip to Italy",
-          genere:"Comedy",
-          sotck:"5",
-          rate:"1.5",
-        }
-
-      ]
+      allMovies:[]
     }
-
+componentDidMount(){
+  fetch("/movies").then((res)=>{
+     return res.json()
+  }).then((e)=>{
+    this.setState({allMovies:e});
+  })
+}
     render(){
 
       let numberOfpages=Math.ceil(this.state.allMovies.length/5);
@@ -65,9 +42,9 @@ class Table extends React.Component{
         return (
           <tr>
           <td>{el.title}</td>
-          <td>{el.genere}</td>
-          <td>{el.sotck}</td>
-          <td>{el.rate}</td>
+          <td key={el._id}>{el.genere}</td>
+          <td>{el.numberInStock}</td>
+          <td>{el.dailyRentalRate}</td>
           <td>like</td>
           <td><button type="button" class="btn btn-danger">Delete</button></td>
          </tr>

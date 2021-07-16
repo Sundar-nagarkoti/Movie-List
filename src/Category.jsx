@@ -5,10 +5,10 @@ class Category extends React.Component{
     }
 
 componentDidMount(){
-    fetch("http://localhost:4000/genre").then((res)=>{
+    fetch("/genre").then((res)=>{
         return res.json()
     }).then((e)=>{
-        
+       this.setState({allGenre:e});
     })
 }
 
@@ -17,7 +17,7 @@ componentDidMount(){
             <ul class="list-group">
                 {this.state.allGenre.map((el)=>{
                    return (
-                    <li class="list-group-item" key={el}>{el}</li>
+                    <li class="list-group-item" key={el._id}>{el.name}</li>
                    );
                 })
                 }
