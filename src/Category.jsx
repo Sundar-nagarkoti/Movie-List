@@ -9,6 +9,7 @@ componentDidMount(){
         return res.json()
     }).then((e)=>{
        this.setState({allGenre:e});
+       console.log(this.state.allGenre);
     })
 }
 
