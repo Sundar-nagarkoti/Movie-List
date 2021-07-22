@@ -1,11 +1,13 @@
 import React from "react";
 class Search extends React.Component {
-  state = {};
+  state = {
+
+  };
 
   render() {
     return (
       <div>
-        <p>Showing 9 movies from database</p>
+        <p>Showing {this.props.noOfmovies} movies from database</p>
         <button type="button" class="btn btn-primary mb-4">
           New
         </button>

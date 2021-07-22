@@ -7,8 +7,18 @@ import Table from './Table';
 
 
 
-function App() {
-  return ( <React.Fragment>
+class App extends React.Component {
+  state={
+    noOfmovies:0,
+  }
+
+  receiveMoviesData=(number)=>{
+    this.setState({noOfmovies:number})
+  }
+
+  render(){
+  return ( 
+  <React.Fragment>
   <Navbar/>
 
 <div className="row">
@@ -19,12 +29,12 @@ function App() {
   <div className="col-10 p-4">
     <div className="row">
       <div className="col-3">
-        <Search/>
+        <Search noOfmovies={this.state.noOfmovies}/>
       </div>
     </div>
   <div className="row">
     <div className="col-8">
-      <Table/>
+      <Table sendData={this.receiveMoviesData}/>
     </div>
   </div>
   </div>
@@ -33,6 +43,7 @@ function App() {
 
 </React.Fragment>
 ); 
+  }
 }
 
 export default App;
